@@ -6,7 +6,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
@@ -18,23 +18,36 @@ model Users {
   managerYn Boolean   @default(false) @map("managerYn")
   createdAt DateTime  @default(now()) @map("createdAt")
   updatedAt DateTime  @updatedAt @map("updatedAt")
+  
+  Questions  Questions[]
+  Answers    Answers[]
+  @@map("Users")
 }
 
-model question {
+model Questions {
   questionId  Int       @id @default(autoincrement()) @map("questionId")
-  userId      Int       @map("userId")
+  UserId      Int       @map("UserId")
   title       String    @map("title")
   content     String    @map("content")
   createdAt   DateTime  @default(now()) @map("createdAt")
   updatedAt   DateTime  @updatedAt @map("updatedAt")
+
+  Answers     Answers[]
+  User        Users           @relation(fields: [UserId], references:[userId])
+  @@map("Questions")
 }
 
-model answer {
-  id          Int       @id @default(autoincrement()) @map
-  userId      Int       @map("userId")
-  questionId  Int       @map("questionId")
+model Answers {
+  answerId    Int       @id @default(autoincrement()) @map("answerId")
+  UserId      Int       @map("UserId")
+  QuestionId  Int       @map("QuestionId")
   content     String    @map("content")
   selectedYn  Boolean   @default(false) @map("selectedYn")
   createdAt   DateTime  @default(now()) @map("createdAt")
   updatedAt   DateTime  @updatedAt @map("updatedAt")
+
+  Question    Questions        @relation(fields:[QuestionId], references:[questionId])
+  User        Users             @relation(fields:[UserId], references: [userId])
+
+  @@map("Answers")
 }
