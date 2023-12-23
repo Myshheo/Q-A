@@ -8,6 +8,8 @@ export class UsersRepository {
                     ...createObj,
                 },
             });
+
+            return createdUser;
         }catch (error) {
             console.log(error)
         }

@@ -3,7 +3,7 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 
 export class UsersService{
-    usersRepositoy = new UsersRepository
+    usersRepositoy = new UsersRepository();
 
     createUser = async(bodyObj) => {
         if(!bodyObj.email){return res.status(400).json({message:"이메일을 입력해주세요."})}

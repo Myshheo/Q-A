@@ -30,5 +30,14 @@ export class UsersController{
 
     }
 
+    upgradeUser = async (req,res)=>{
+        try{
+
+
+        }catch(error){
+            return res.status(error.status).json({data:error})
+        }
+
+    }
 
 }
