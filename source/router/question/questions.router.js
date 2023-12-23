@@ -1,5 +1,5 @@
 import express from 'express'
-import QuestionsController from '../../controller/user/users.controller.js'
+import { QuestionsController } from '../../controller/question/questions.controller.js'
 import authMiddleware from '../../midddlewares/auth.middleware.js';
 
 const router = express.Router();

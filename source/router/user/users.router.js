@@ -1,6 +1,6 @@
 import express from 'express'
-import UsersController from '../../controller/user/users.controller.js'
-import authMiddleware from '../../midddlewares/auth.middleware.js';
+import { UsersController } from '../../controller/user/users.controller.js'
+// import authMiddleware from '../../midddlewares/auth.middleware.js';
 
 const router = express.Router();
 
@@ -10,6 +10,6 @@ router.post('/signup', usersController.createUser);
 
 router.post('/signin', usersController.signinUser);
 
-router.put('/upgrade/:userId', authMiddleware, usersController.upgradeUser);
+router.put('/upgrade/:userId', usersController.upgradeUser);
 
 export default router;
