@@ -32,8 +32,11 @@ export class UsersController {
 
     upgradeUser = async (req, res) => {
         try {
-
-
+            const upgradedUser =
+                await this.usersServicee.upgradeUser(
+                    req.body
+                );
+            return res.status(200).json({ data: upgradedUser })
         } catch (error) {
             return res.status(error.status).json({ data: error })
         }

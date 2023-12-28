@@ -47,6 +47,11 @@ export class UsersService {
         return res.status(200).json({ message: "로그인 성공" })
     };
 
+    upgradedUser = async bodyObj => {
+
+
+    }
+
 }
 
 class User {
